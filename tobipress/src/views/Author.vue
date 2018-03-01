@@ -7,7 +7,7 @@
           <SideBarHome/>
         </div>
         <div class="col-sm-9">
-          <h1>Welcome in tobiPress</h1>
+          <h1>Hi {{user}}</h1>
             <ContentHome/>
         </div>
       </div>
@@ -16,17 +16,14 @@
 </template>
 
 <script>
-import SideBarHome from '@/components/SideBarHome'
-import ContentHome from '@/components/ContentHome'
-import Category from '@/components/Category'
 export default {
-  components: {
-    SideBarHome,
-    ContentHome,
-    Category
+  computed: {
+    user () {
+      return this.$store.state.user
+    }
   },
   created: function () {
-    this.$store.dispatch('getAllArticle')
+    return this.$store.dispatch.getInfo
   }
 }
 </script>
