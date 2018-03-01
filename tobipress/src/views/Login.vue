@@ -39,8 +39,9 @@ export default {
         password: self.password
       })
         .then(user => {
-          this.$store.commit('setUser', user.data.data)
-          // console.log()
+          localStorage.setItem('token', user.data.data[0])
+          this.$store.commit('setUser', user.data.data[1])
+          this.$store.dispatch('getAllArticle')
         })
         .catch(err => {
           console.log(err)
