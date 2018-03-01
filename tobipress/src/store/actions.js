@@ -17,7 +17,7 @@ export const getInfo = ({commit, state}, payload) => {
     }
   })
     .then(userInfo => {
-      console.log('userinfo', userInfo)
+      commit('setUser', userInfo.data.data)
     })
     .catch(err => {
       console.log(err)
