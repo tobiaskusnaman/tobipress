@@ -4,6 +4,7 @@ import Login from './views/Login.vue'
 import About from './views/About.vue'
 
 Vue.use(Router)
+// Vue.use(Vuex)
 
 export default new Router({
   mode: 'history',
