@@ -62,6 +62,10 @@ class UserController {
       })
     })
   }
+
+  static getInfo (req,res) {
+    res.send(req.headers.decoded)
+  }
 }
 
 module.exports = UserController;

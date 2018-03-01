@@ -17,7 +17,17 @@ export default new Router({
     },
     {
       path: '/',
-      component: Home
-    }
-  ]
+      component: Home,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem('token')) {
+          next()
+        } else {
+          next('/login')
+        }
+      }
+    },
+    {
+      path: '*',
+      component: Login
+    }]
 })

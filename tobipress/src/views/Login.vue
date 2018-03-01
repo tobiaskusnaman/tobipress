@@ -42,6 +42,7 @@ export default {
           localStorage.setItem('token', user.data.data[0])
           this.$store.commit('setUser', user.data.data[1])
           this.$store.dispatch('getAllArticle')
+          this.$router.push('/')
         })
         .catch(err => {
           console.log(err)

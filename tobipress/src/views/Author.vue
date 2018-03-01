@@ -4,15 +4,19 @@
       <div class="row">
         <div class="col-sm-3">
           <!-- <Category/> -->
-          <!-- <SideBarHome/> -->
+          <SideBarAuthor/>
         </div>
         <div class="col-sm-9">
           <h1>Hi {{user.username}} !</h1>
             <!-- <ContentHome/> -->
             <button v-if="!isWrite" type="button" class="btn btn-primary" @click='writeReady'>Ready to write?</button>
+
               <form v-else class="" action="index.html" method="post">
                 <div class="form-group">
                  <input type="text" class="form-control" v-model='title' placeholder="Title">
+               </div>
+                <div class="form-group">
+                 <input type="text" class="form-control" v-model='category' placeholder="Category">
                </div>
                <div class="form-group">
                  <textarea class="form-control" v-model='content' placeholder="Write your content here" style="height:500px"></textarea>
@@ -26,15 +30,19 @@
 </template>
 
 <script>
-
+import SideBarAuthor from '@/components/SideBarAuthor'
 export default {
+  components: {
+    SideBarAuthor
+  },
   data: function () {
     return {
       user: this.$store.state.user,
       userArticle: null,
       title: null,
       content: null,
-      isWrite: false
+      isWrite: false,
+      category: null
     }
   },
   methods: {
@@ -43,20 +51,22 @@ export default {
     },
     addArticle () {
       let self = this
-      this.$axios.post('/authors/article/create', {
+      this.$axios.post('/articles/create', {
         title: self.title,
         content: self.content,
-        authorId: self.$store.state.author._id
+        userId: self.$store.state.user._id,
+        category: self.category.toLowerCase()
       }, {
         headers: {
-          token: self.$store.state.authorToken
+          token: localStorage.getItem('token')
         }
       })
         .then(article => {
           self.title = null
           self.content = null
+          self.category = null
           self.isWrite = false
-          self.$store.commit('setNewArticle', article.data.data)
+          // self.$store.commit('addNewArticle', article.data.data)
         })
         .catch(err => {
           console.log(err)

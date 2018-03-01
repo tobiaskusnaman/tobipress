@@ -7,10 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <router-link class="nav-link" :to="{ path: '/', params: {} }"> Home </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Author Page <span class="sr-only">(current)</span></a>
+          <router-link class="nav-link" :to="{ path: '/author', params: {} }"> Author </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{ path: '/login', params: {} }"> Log Out </router-link>
         </li>
       </ul>
     </div>
