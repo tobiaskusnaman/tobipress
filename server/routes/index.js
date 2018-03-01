@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const User = require('../controllers/user');
+/* GET users listing. */
+router.post('/login', User.login);
+router.post('/register', User.register);
 
 module.exports = router;
