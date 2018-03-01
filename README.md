@@ -4,14 +4,11 @@ List of server routes:
 
 |Route|HTTP|Description|
 |-|-|-|
-|/api/user/login|POST|User login
-|/api/user/register|POST|Create a user
-|/api/user/:id|GET|Find User
+|/api/login|POST|User login
+|/api/register|POST|Create a user
 |/api/articles|GET|Read all articles
 |/api/articles/create|POST|Create a new post
-|/api/articles/:articleId|GET|Find article by article id
-|/api/articles/:articleId|PUT|Edit article by article id
-|/api/articles/:articleId|DELETE|Delete article by article id
-|/api/articles/getArticle/:username|GET|Delete article by username
-
-List of client routes:
+|/api/articles/:id|GET|Find article by article id
+|/api/articles/:id|PUT|Edit article by article id
+|/api/articles/:id/:userId|DELETE|Delete article by article id
+|/api/articles/getArticle/:userId|GET|Delete article by user Id
